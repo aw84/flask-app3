@@ -1,3 +1,17 @@
+class CeleryConfig:
+    worker_concurrency = 1
+    beat_schedule = {
+        "add-every-10-seconds": {
+            "task": "app.celery.tasks.test_scheduled_task",
+            "schedule": 10.0,
+            "args": (12, 2),
+            "options": {
+                "expires": 2
+            }
+        },
+    }
+
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -10,6 +24,9 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True
     DEVELOPMENT = True
+    CELERY_BROKER_URL = "redis://10.10.0.105:16379/0"
+    RESULT_BACKEND = "redis://10.10.0.105:16379/0"
+
 
 class TestingConfig(Config):
     DEBUG = True

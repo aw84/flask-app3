@@ -10,7 +10,16 @@ export PYTHONPATH=/code/flask-app3
 pytest -vvv tests/
 ```
 # Application run
+Flask
 ```bash
 export FLASK_ENV=development
 flask run
+```
+Celery worker
+```bash
+celery -A app.celery.tasks worker -l info
+```
+Celery beat
+```bash
+celery -A app.celery.tasks beat -l info
 ```

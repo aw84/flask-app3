@@ -5,3 +5,6 @@ flask-migrate
 pytest
 black
 psycopg2-binary
+celery
+click<8
+redis
