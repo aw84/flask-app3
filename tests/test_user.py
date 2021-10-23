@@ -3,6 +3,7 @@ import json
 from app.model.user import User
 from app.service.user import ns, user_list
 from flask_restx import marshal
+from celery.beat import PersistentScheduler
 
 ENDPOINT = ns.path
 
@@ -19,6 +20,7 @@ def test_user_get(client, database):
     database.session.commit()
 
     response = client.get(f"{ENDPOINT}/")
+    pretty_debug(response.data)
     assert response.status_code == 200
     data = json.loads(response.data)
 

@@ -9,7 +9,7 @@ def create_app(environment=DevelopmentConfig):
     app = Flask(__name__)
     app.config.from_object(environment)
     app.app_context().push()
-    from app.celery import make_celery
+
     db.init_app(app)
 
     from app.service import api
@@ -19,4 +19,5 @@ def create_app(environment=DevelopmentConfig):
 
 
 app = create_app()
+
 migrate = Migrate(app, db)

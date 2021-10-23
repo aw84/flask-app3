@@ -8,3 +8,4 @@ psycopg2-binary
 celery
 click<8
 redis
+flake8

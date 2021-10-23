@@ -5,9 +5,7 @@ class CeleryConfig:
             "task": "app.celery.tasks.test_scheduled_task",
             "schedule": 10.0,
             "args": (12, 2),
-            "options": {
-                "expires": 2
-            }
+            "options": {"expires": 2},
         },
     }
 
@@ -20,12 +18,12 @@ class Config(object):
 
 
 class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@10.10.0.105:15432/db1"
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@192.168.0.18:15432/db1"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True
     DEVELOPMENT = True
-    CELERY_BROKER_URL = "redis://10.10.0.105:16379/0"
-    RESULT_BACKEND = "redis://10.10.0.105:16379/0"
+    CELERY_BROKER_URL = "redis://192.168.0.18:16379/0"
+    RESULT_BACKEND = "redis://192.168.0.18:16379/0"
 
 
 class TestingConfig(Config):

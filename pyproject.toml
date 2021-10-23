@@ -1,0 +1,11 @@
+[tool.black]
+line-length = 88
+exclude = '''
+/(
+  \.git
+  | \.vscode
+  | __pycache__
+  | \.pytest_cache
+)/
+'''
+target-version = ['py38']
