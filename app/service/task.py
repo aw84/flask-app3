@@ -9,4 +9,4 @@ class Task(Resource):
     def get(self):
 
         id = test_task.apply_async(args=(1, 3))
-        return f"OK {id}", 200
+        return f"OK {id.task_id=}", 200

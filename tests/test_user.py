@@ -3,7 +3,6 @@ import json
 from app.model.user import User
 from app.service.user import ns, user_list
 from flask_restx import marshal
-from celery.beat import PersistentScheduler
 
 ENDPOINT = ns.path
 
@@ -31,3 +30,11 @@ def test_user_get(client, database):
 
     assert u_obj.user_nm == test_user_obj.user_nm
     assert u_obj.id == test_user_obj.id
+
+
+def test_user_404(client):
+    User.query.delete()
+    response = client.get(f"{ENDPOINT}/")
+    assert response.status_code == 404
+    data = json.loads(response.data)
+    assert list(data.keys()) == ["code", "message"]
