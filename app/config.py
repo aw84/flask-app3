@@ -18,14 +18,15 @@ class Config(object):
 
 
 class DevelopmentConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@192.168.0.18:15432/db1"
+    SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@databse:15432/db1"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     DEBUG = True
     DEVELOPMENT = True
-    CELERY_BROKER_URL = "redis://192.168.0.18:16379/0"
-    RESULT_BACKEND = "redis://192.168.0.18:16379/0"
+    CELERY_BROKER_URL = "redis://redis:16379/0"
+    RESULT_BACKEND = "redis://redis:16379/0"
 
 
 class TestingConfig(Config):
     DEBUG = True
     TESTING = True
+    
