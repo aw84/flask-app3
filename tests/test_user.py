@@ -1,7 +1,7 @@
 import json
 
 from app.model.user import User
-from app.service.user import ns, user_list
+from app.service.user import ns, user_model
 from flask_restx import marshal
 
 ENDPOINT = ns.path
@@ -25,7 +25,7 @@ def test_user_get(client, database):
 
     assert len(data) == 1
 
-    u_dict = marshal(data[0], user_list)
+    u_dict = marshal(data[0], user_model)
     u_obj = User(**u_dict)
 
     assert u_obj.user_nm == test_user_obj.user_nm
